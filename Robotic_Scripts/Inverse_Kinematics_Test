@@ -89,3 +89,5 @@ T_right_step3 = T3_T;
  
 disp(T_left_step3);
 disp(T_right_step3);
+
+display(simplify(T0_T));
