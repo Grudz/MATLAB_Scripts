@@ -1,0 +1,22 @@
+%diode	characteristics,	Nashwan	Sebi	09/05/2019
+clear	all;
+close	all;
+clc;
+%Parameters	and	Formulation	Part
+k_Boltz	=	1.38e-23; %	Boltzman	Constant
+q_Elec	=	1.6e-19; %	q	is the	electron	charge
+T	=	273	+	0;	% Temperature	Conversion	to	Kelvin	Scale
+l_sat	=	1.0e-12; %	Saturation	Current
+V_diode =(0:0.01:0.7); %start:sampling rate:finish
+
+Vt = (k_Boltz * T)/q_Elec;
+n = 1;
+
+I_d = l_sat*exp(V_diode/(n*Vt));
+
+% Plotting the Results
+plot(V_diode,I_d, 'g')	
+axis([0,0.75,0,10])
+%title('Diode	I-V	Curve')
+xlabel('Vd	(V)')
+ylabel('Id	(A)')
