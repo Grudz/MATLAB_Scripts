@@ -1,0 +1,33 @@
+%ECE 3300 MATLAB Extra Credit Activity
+%By: Ben Grudzien
+ 
+clc;
+close all;
+clear all;
+ 
+x = (0:0.01:10)'; % start:sampling rate:end
+ 
+t1 = 100; % arbitrary time
+wavelength1 = 2;
+F1 = 5; % Hz
+ 
+y1 = 5*cos(2*pi*F1*t1 - (pi/wavelength1)*x);
+ 
+%---------------------%
+ 
+t2 = 100; 
+wavelength2 = 2.8736;
+alpha = -0.253;
+F2 = 0.80256; 
+ 
+y2 = 5*exp(alpha*x).*cos(2*pi*F2*t2 - 2*pi*x/wavelength2);
+ 
+%---------------------%
+ 
+plot(x,y1, 'b');
+hold on;
+plot (x, y2, 'r');
+xlabel('Distance [cm]');
+ylabel('Voltage [V]');
+title('Traveling Waves: Distance vs Voltage');
+zoom xon;
