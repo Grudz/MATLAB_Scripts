@@ -1,0 +1,59 @@
+%MATLAB script function to compute and plot the joint positions of the robot when it follows
+%the selected Cartesian path.
+
+% Define two Cartesian points within workspace of the robot
+% [ Px Py Pz Thetaz ]
+p1 = [ 1 1 1 0 ];
+p2 = [ 1.5 -1 0 0 ];
+
+% Generate the Cartesian position vector
+n = 100;
+Px = zeros(1, n+1);
+Py = zeros(1, n+1);
+Pz = zeros(1, n+1);
+Thetaz = zeros(1, n+1);
+for i = 0:1:n
+ Px(i+1) = p1(1) + (p2(1)-p1(1))*i/n;
+ Py(i+1) = p1(2) + (p2(2)-p1(2))*i/n;
+ Pz(i+1) = p1(3) + (p2(3)-p1(3))*i/n;
+ Thetaz(i+1) = p1(4) + (p2(4)-p1(4))*i/n;
+end
+
+% Compute the joint poisiton vector
+t1 = zeros(1, n+1);
+t2 = zeros(1, n+1);
+d3 = zeros(1, n+1);
+t4 = zeros(1, n+1);
+Time = zeros(1, n+1);
+for i = 1:1:n+1
+ JointPos = ScaraRobot_IK( [Px(i) Py(i) Pz(i) Thetaz(i) ] );
+ t1(i)=JointPos(1);
+ t2(i)=JointPos(2);
+ d3(i)=JointPos(3);
+ t4(i)=JointPos(4);
+ Time(i)=i-1;
+end
+
+% Plot the 3D Cartesian path
+plot3(Px, Py, Pz)
+grid on
+axis([-2 2 -2 2 0 2])
+xlabel('x0')
+ylabel('y0')
+zlabel('z0')
+title('Cartesian path')
+
+% Plot the joint positions
+figure
+subplot(4,1,1)
+plot(Time, t1);
+title('Theta 1')
+subplot(4,1,2)
+plot(Time, t2);
+title('Theta 2')
+subplot(4,1,3)
+plot(Time, d3);
+title('D 3')
+subplot(4,1,4)
+plot(Time, t4);
+title('Theta 4')
