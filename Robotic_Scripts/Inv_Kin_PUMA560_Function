@@ -25,7 +25,7 @@ display(JPosD);
 
 %p560.plot(JPos8);
 
-p560.plot(JPos, 'delay', 1);
+p560.plot(JPos, 'delay', 1); % Plots every position
 
 
 
