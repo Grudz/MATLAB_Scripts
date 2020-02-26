@@ -1,6 +1,8 @@
 % Group 13 Matlab Script for inverse kinematics - Problem 2
 % Members: Benjamin Grudzien, Miguel Jaimes, Merlin Loetzner
 
+% This script is in devolopment and contains errors!!!!
+
 clc; % Clears Terminal and closes everything
 close all;
 
