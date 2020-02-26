@@ -1,0 +1,6 @@
+% "Residue" function for Inverse Laplace Transfomrations
+
+num = [6, 26, 26]; % Transfer function in the frequency domain
+den = [1, 7, 14, 8];
+
+[r, p, k] = residue(num, den); % Output => X(s)=r/(s-p)
